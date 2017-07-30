@@ -20,7 +20,7 @@ if has("syntax")
   syntax on
 endif
 
-let mapleader=";"
+" let mapleader=";"
 
 " sybtax highlighting
 syntax enable
