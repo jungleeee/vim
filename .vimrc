@@ -24,10 +24,15 @@ endif
 
 " sybtax highlighting
 syntax enable
+syntax on
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
+"let g:solarized_termtrans=1
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="normal"
 set background=dark
+"set t_Co=256
 "colorscheme solarized
 colorscheme molokai
 "colorscheme phd
@@ -77,13 +82,13 @@ Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 call vundle#end()
-filetype plugin indent on
 
 " set theme style
-let g:Powerline_colorscheme='solarized256'
+"let g:Powerline_colorscheme='solarized256'
 
 " set indent guides
 let g:indent_guides_enable_on_vim_startup=1	" follow VIM startup
@@ -92,7 +97,11 @@ let g:indent_guides_guide_sizw=1	    	" color piece width
 ":nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 " *.c** & *.h, fast switch
-:nmap <silent> <Leader>sw :FSHere<cr>
+":nmap <silent> <Leader>sw :FSHere<cr>
+
+" set Ctags
+"set tags=./tags,./*/tags
+"map <F7>: !ctags -R <CR><CR>
 
 " set tagbar
 map <F8> :TagbarToggle<CR>
@@ -135,38 +144,41 @@ let g:tagbar_type_cpp = {
     \ }
 
 " set indexer 
-let g:indexer_ctagsCommandLineOptions="--c++-kinds=+c+d+e+f+l+m+n+p+s+t+u+v+x --dields=+iaSl --extra+=q"
+let g:indexer_ctagsCommandLineOptions="--c++-kinds=+c+d+e+f+l+m+n+p+s+t+u+v+x --fields=+iaSl --extra=+q"
 
 " set ultisnips
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-let g:UltiSnipsSnippetDirectories=["mysnippets"]
+"let g:UltiSnipsSnippetDir="~/.vim/bundle/ultisnips"
+"let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/ultisnips/UltiSnips']
+"let g:UltiSnipsExpandTrigger="<c-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " set YouComplete
 set runtimepath+=~/.vim/bundle/YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files=1             " open YCM tags
+let g:ycm_collect_identifiers_from_tags_files=1             " open YCM tags completion 
 let g:ycm_complete_in_comments=1
-let g:ycm_complete_in_strings=1
-let g:ycm_collect_identifiers_from_comments_and_strings=1   " 
-let g:ycm_seed_identfiers_with_syntax=1                    " 
-let g:ycm_confirm_extra_conf=0
-let g:ycm_key_list_select_completion=['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion=['<c-p>', '<Up>']
-let g:ycm_show_diagnostics_ui=0
-let g:ycm_min_num_of_chars_for_completion=2
+"let g:ycm_complete_in_strings=1
+"let g:ycm_collect_identifiers_from_comments_and_strings=1   " 
+let g:ycm_seed_identfiers_with_syntax=1                     " grammar keyword completion  
+let g:ycm_confirm_extra_conf=0                              " load file .ycm_extra_conf.py  
+let g:ycm_key_list_select_completion=['<c-n>', '<Down>']    " completion the full list shortcut key; default TAB  
+let g:ycm_key_list_previous_completion=['<c-p>', '<Up>']    " completion the full list shortcut key; default TAB 
+"let g:ycm_show_diagnostics_ui=0
+let g:ycm_min_num_of_chars_for_completion=2                 " lists the matches frim the second character 
+let g:ycm_cache_comnifunc=0                                 " cache matching entries are not allowed
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:syntastic_ignore_filrs=[".*\.py$"]
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |
-nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR> |
+"inoremap <leader>; <C-x><C-o>
+"let g:syntastic_ignore_filrs=[".*\.py$"]
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |
+"nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR> |
 
 " set NERDTree
 nmap <F9> :NERDTreeToggle<CR>
-let NERDTreeWinSize=32
-let NERDTreeWinPos="right"
-let NERDTreeShoeHidden=1
-let NERDTreeMinimalUI=1
-let NERDTreeAutoDeleteBuffer=1
+let NERDTreeWinSize=32              " set width 
+let NERDTreeWinPos="right"          " set position 
+let NERDTreeShoeHidden=1            " show the hidden files 
+let NERDTreeMinimalUI=1             " the window tags not show help info 
+let NERDTreeAutoDeleteBuffer=1      " Automatically deletes files when deletes files buffer 
 
 
 " ban cursor blink
@@ -192,11 +204,13 @@ set ruler
 set number
 
 " code indentation
-filetype indent on	" different file smart indent
-set expandtab		" TAB extension for space
-set tabstop=4		" set the edit TAB takes up space
-set shiftwidth=4	" set the format TAB takes up space
-"set softtabstop=4	" the continue spaces as a TAB character
+filetype indent on              " different file smart indent
+filetype plugin on              " load the corrrsponding plug-in for different file types
+filetype plugin indent on       " open antomatic completion
+set expandtab	                " TAB extension for space
+set tabstop=4	                " set the edit TAB takes up space
+set shiftwidth=4                " set the format TAB takes up space
+"set softtabstop=4              " the continue spaces as a TAB character
 
 " highlighting the current line/column
 set cursorline
