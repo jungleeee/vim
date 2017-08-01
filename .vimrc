@@ -20,7 +20,7 @@ if has("syntax")
   syntax on
 endif
 
-" let mapleader=";"
+"let g:mapleader=";"
 
 " sybtax highlighting
 syntax enable
@@ -28,14 +28,10 @@ syntax on
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-"let g:solarized_termtrans=1
-"let g:solarized_contrast="normal"
-"let g:solarized_visibility="normal"
 set background=dark
-"set t_Co=256
-"colorscheme solarized
-colorscheme molokai
-"colorscheme phd
+let g:solarized_termtrans=256
+colorscheme solarized
+"colorscheme molokai
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -44,7 +40,6 @@ colorscheme molokai
 "endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
 "if has("autocmd")
 "  filetype plugin indent on
 "endif
@@ -72,7 +67,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/phd'
+"Plugin 'vim-scripts/phd'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-fswitch'
@@ -80,6 +75,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
+"Plugin 'mileszs/ack.vim'
+Plugin 'dyng/ctrlsf.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
@@ -87,8 +84,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
-" set theme style
-"let g:Powerline_colorscheme='solarized256'
+" set powerline theme style
+let g:Powerline_colorscheme='solarized256'
 
 " set indent guides
 let g:indent_guides_enable_on_vim_startup=1	" follow VIM startup
@@ -97,14 +94,14 @@ let g:indent_guides_guide_sizw=1	    	" color piece width
 ":nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 " *.c** & *.h, fast switch
-":nmap <silent> <Leader>sw :FSHere<cr>
+nmap <M-s> :FSHere<CR>      " switch *.cpp & *.h
 
 " set Ctags
 "set tags=./tags,./*/tags
 "map <F7>: !ctags -R <CR><CR>
 
 " set tagbar
-map <F8> :TagbarToggle<CR>
+map <F8> :TagbarToggle<CR>  " ON/OFF tagbar
 let tagbar_left=1           " set the position of the tagbar
 let tagbar_width=32         " set the width of the child window tags
 let g:tagbar_compact=1      " the window tags not show help info
@@ -146,10 +143,20 @@ let g:tagbar_type_cpp = {
 " set indexer 
 let g:indexer_ctagsCommandLineOptions="--c++-kinds=+c+d+e+f+l+m+n+p+s+t+u+v+x --fields=+iaSl --extra=+q"
 
+" set ctrlsf
+let g:ctrlsf_ackprg='ack'              " set default
+nnoremap <M-f> :CtrlSF<CR>             " search/find words
+
+" set nerdcommenter
+map <M-c> <Leader>cc                   " add comment
+map <M-u> <Leader>cu                   " cancel comment
+map <M-a> <Leader>ca                   " seitch /*  */ & //
+let g:NERDSpaceDelims=1                " add Spaceson both sides
+
 " set ultisnips
 "let g:UltiSnipsSnippetDir="~/.vim/bundle/ultisnips"
 "let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/ultisnips/UltiSnips']
-"let g:UltiSnipsExpandTrigger="<c-tab>"
+"let g:UltiSnipsExpandTrigger="<M-f>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -161,8 +168,8 @@ let g:ycm_complete_in_comments=1
 "let g:ycm_collect_identifiers_from_comments_and_strings=1   " 
 let g:ycm_seed_identfiers_with_syntax=1                     " grammar keyword completion  
 let g:ycm_confirm_extra_conf=0                              " load file .ycm_extra_conf.py  
-let g:ycm_key_list_select_completion=['<c-n>', '<Down>']    " completion the full list shortcut key; default TAB  
-let g:ycm_key_list_previous_completion=['<c-p>', '<Up>']    " completion the full list shortcut key; default TAB 
+let g:ycm_key_list_select_completion=['<M-n>', '<Down>']    " completion the full list shortcut key; default TAB  
+let g:ycm_key_list_previous_completion=['<M-m>', '<Up>']    " completion the full list shortcut key; default TAB 
 "let g:ycm_show_diagnostics_ui=0
 let g:ycm_min_num_of_chars_for_completion=2                 " lists the matches frim the second character 
 let g:ycm_cache_comnifunc=0                                 " cache matching entries are not allowed
@@ -170,7 +177,9 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cp
 "inoremap <leader>; <C-x><C-o>
 "let g:syntastic_ignore_filrs=[".*\.py$"]
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |
-"nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR> |
+nnoremap <M-=> :YcmCompleter GoToDefinition<CR>             " jump to define
+"nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <M-=> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " set NERDTree
 nmap <F9> :NERDTreeToggle<CR>
@@ -179,7 +188,6 @@ let NERDTreeWinPos="right"          " set position
 let NERDTreeShoeHidden=1            " show the hidden files 
 let NERDTreeMinimalUI=1             " the window tags not show help info 
 let NERDTreeAutoDeleteBuffer=1      " Automatically deletes files when deletes files buffer 
-
 
 " ban cursor blink
 "set gcr=a:block-blinon0
@@ -220,7 +228,33 @@ set cursorline
 "set hlsearch
 
 " code folding
-"set foldmethod=indent  "based on the code folding indentation
-set foldmethod=syntax   "based on the syntax folding indentation
-set nofoldenable        "close code folding when VIM startup
- 
+"set foldmethod=indent          " based on the code folding indentation
+set foldmethod=syntax           " based on the syntax folding indentation
+set nofoldenable                " close code folding when VIM startup
+
+" alt key mapping
+set ttimeout ttimeoutlen=100    " set keypad code to judfe time 
+" set *.cpp & *.h switch
+exec "set <M-s>=\es"
+inoremap <M-s> <esc>sa
+" set CtrlSF search
+exec "set <M-f>=\ef"
+inoremap <M-f> <esc>fa
+" set /*  */
+exec "set <M-c>=\ec"
+inoremap <M-c> <esc>ca
+" set cancel /*  */
+exec "set <M-u>=\eu"
+inoremap <M-u> <esc>ua
+" ser switch /*  */ & //
+exec "set <M-a>=\ea"
+inoremap <M-a> <esc>aa
+" set YCM Down
+exec "set <M-n>=\en"
+inoremap <M-n> <esc>na
+" set YCM Up
+exec "set <M-m>=\em"
+inoremap <M-m> <esc>ma
+" set YCM enter definition
+exec "set <M-=>=\e="
+inoremap <M-=> <esc>=a
