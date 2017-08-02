@@ -20,24 +20,74 @@ if has("syntax")
   syntax on
 endif
 
-"let g:mapleader=";"
-
-" sybtax highlighting
-syntax enable
-syntax on
+" General set {
+    " the vimrc file is automatically loaded after modification
+    "autocmd! bufwritepost _vimrc source %   " windows
+    autocmd! bufwritepost .vimrc source %   " linux
+    "let g:mapleader=";"
+    set autowrite                   " auto save file
+    set nobackup                    " never backup
+    set noswapfile                  " close switch file
+    "set t_ti= t_te=                 " exit Vim, the context is dispaly in the terminal
+" }
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-set background=dark
-let g:solarized_termtrans=256
-colorscheme solarized
-"colorscheme molokai
+
+" Vim-UI set {    
+    " theme {
+        set background=dark
+        let g:solarized_termtrans=256
+        colorscheme solarized
+        "colorscheme molokai
+        "set guifont =              " set default font
+    " }
+    " code fold {method: manual, indent, expr, syntax, diff, marker
+        "set foldenable
+        set nofoldenable            " close code folding when VIM startup
+        set foldmethod=syntax       " based on the syntax folding indentation
+        set foldmarker={,}
+    " }
+    "  search {
+        set incsearch               " follow search
+        set hlsearch                " highlighting search
+        set ignorecase              " ingore case
+    "  }
+
+    syntax enable                   " sybtax highlighting
+    syntax on                       " syntax highlighting
+
+    set expandtab	                " TAB extension for space
+    set tabstop=4	                " set the edit TAB takes up space
+    set shiftwidth=4                " set the format TAB takes up space
+    "set softtabstop=4              " the continue spaces as a TAB character
+    
+    set laststatus=2                " alaways shows status bar
+    set ruler                       " show the current cursor position 
+    set number                      " open ling number 
+    
+    set nowrap                      " no folding current row
+    set autoindent                  " the current line format is applied to the next line
+    set cursorline                  " highlighting current line
+    "set cursorcolumn               " highlighting current column
+    set showmatch                   " highlighting the matching brackets
+    
+    "set gcr=a:block-blinon0        " ban cursor blink
+
+    "set guioptions-=l              " ban on the scroll bar dispaly
+    "set guioptions-=L
+    "set guioptions-=r
+    "set guioptions-=R
+
+    "set guioptions-=m              " ban on the menu bar dispaly
+    "set guioptions-=M
+" }
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 "if has("autocmd")
@@ -52,7 +102,7 @@ colorscheme solarized
 "set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
+"set hidden	    	" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
@@ -67,7 +117,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-"Plugin 'vim-scripts/phd'
+"Pluglin 'vim-scripts/phd'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-fswitch'
@@ -82,7 +132,12 @@ Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+Plugin 'fholgado/minibufexpl.vim'
 call vundle#end()
+
+filetype indent on              " different file smart indent
+filetype plugin on              " load the corrrsponding plug-in for different file types
+filetype plugin indent on       " open antomatic completion
 
 " set powerline theme style
 let g:Powerline_colorscheme='solarized256'
@@ -177,60 +232,27 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cp
 "inoremap <leader>; <C-x><C-o>
 "let g:syntastic_ignore_filrs=[".*\.py$"]
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |
-nnoremap <M-=> :YcmCompleter GoToDefinition<CR>             " jump to define
+"nnoremap <M-=> :YcmCompleter GoToDefinition<CR>             " jump to define
 "nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <M-=> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " set NERDTree
 nmap <F9> :NERDTreeToggle<CR>
-let NERDTreeWinSize=32              " set width 
-let NERDTreeWinPos="right"          " set position 
-let NERDTreeShoeHidden=1            " show the hidden files 
-let NERDTreeMinimalUI=1             " the window tags not show help info 
-let NERDTreeAutoDeleteBuffer=1      " Automatically deletes files when deletes files buffer 
+let NERDTreeWinSize=32                  " set width 
+let NERDTreeWinPos="right"              " set position 
+let NERDTreeShoeHidden=1                " show the hidden files 
+let NERDTreeMinimalUI=1                 " the window tags not show help info 
+let NERDTreeAutoDeleteBuffer=1          " Automatically deletes files when deletes files buffer 
 
-" ban cursor blink
-"set gcr=a:block-blinon0
-
-" ban on the scroll bar dispaly
-"set guioptions-=l
-"set guioptions-=L
-"set guioptions-=r
-"set guioptions-=R
-
-" ban on the menu bar dispalay
-"set guioptions-=m
-"set guioptions-=M
-
-" alaways shows status bar
-set laststatus=2
-
-" show the current cursor position
-set ruler
-
-" open line number
-set number
-
-" code indentation
-filetype indent on              " different file smart indent
-filetype plugin on              " load the corrrsponding plug-in for different file types
-filetype plugin indent on       " open antomatic completion
-set expandtab	                " TAB extension for space
-set tabstop=4	                " set the edit TAB takes up space
-set shiftwidth=4                " set the format TAB takes up space
-"set softtabstop=4              " the continue spaces as a TAB character
-
-" highlighting the current line/column
-set cursorline
-"set cursorcolumn
-
-" highlighting the search result
-"set hlsearch
-
-" code folding
-"set foldmethod=indent          " based on the code folding indentation
-set foldmethod=syntax           " based on the syntax folding indentation
-set nofoldenable                " close code folding when VIM startup
+" set minibuffexploer
+"map <F7>  :MBEToggle<CR>
+map <M-q> :bn<CR>                       " switch window
+map <M-w> :bp<CR>                       " switch window
+"let g:miniBufExplMapWindowNavVim=1      " use <C-h,j,k,l> switch window
+"let g:miniBufExplMapWindowMavArrows=1   " use <C-<Down,Up,Left,Right>> switch window
+"let g:miniBufExplMapCTabSwitchBufs=1    " use <C-Tab> switch window
+"let g:miniBufExplModSelTarget=1
+let g:miniBufExplModThanOne=0
 
 " alt key mapping
 set ttimeout ttimeoutlen=100    " set keypad code to judfe time 
@@ -258,3 +280,117 @@ inoremap <M-m> <esc>ma
 " set YCM enter definition
 exec "set <M-=>=\e="
 inoremap <M-=> <esc>=a
+" set miniBufExpl switch windoe
+exec "set <M-q>=\eq"
+inoremap <M-q> <esc>qa
+exec "set <M-w>=\ew"
+inoremap <M-w> <esc>wa
+
+" new creat *.c,*.h,*.sh & .. , automatically insert the comment module
+" function {
+    autocmd BufNewFile *.md exec ":call Setmd()"
+    func! Setmd()
+        call setline(1, "data: ".strftime("%Y-%m-%d %T"))
+        call append(line("."), "tags: ")
+        call append(line(".")+1, "---")
+        call append(line(".")+2, "")
+    endfunc
+    autocmd BufNewFile *.c,*.cpp,*.h,*.sh,*.py exec ":call SetTitle()"
+    func! SetTitle()         " define function SetTitle, auto insert file header
+        if &filetype=='python'
+            call setline(1, "#-*- encoding: UTF-8 -*-")
+            call append(line("."), "#-------------------------------------import-------------------------------------")
+            call append(line(".")+1, "#--------------------------------------------------------------------------------#")
+            call append(line(".")+2, "##################################################################################")
+        endif
+        if &filetype=='sh'
+            call setline(1, "\##################################################################################")
+            call append(line("."),   "\# File Name    : ".expand("%"))
+            call append(line(".")+1, "\# Author       : Jungle")
+            call append(line(".")+2, "\# Mail         : ")
+            call append(line(".")+3, "\# Created Time : ".strftime("%c"))
+            call append(line(".")+4, "\# Last Changed : TIMESTAMP")
+            call append(line(".")+5, "\##################################################################################")
+            call append(line(".")+6, "\#!/bim/bash".expand("%"))
+            call append(line(".")+7, "")
+        endif
+        if &filetype=='c'
+            call setline(1, "/**")
+            call append(line("."),   "  ********************************************************************************")
+            call append(line(".")+1, "  * @File Name    : ".expand("%"))
+            call append(line(".")+2, "  * @Author       : Jungle")
+            call append(line(".")+3, "  * @Mail         : ")
+            call append(line(".")+4, "  * @Created Time : ".strftime("%c"))
+            call append(line(".")+5, "  * @Version      : V1.0")
+            call append(line(".")+6, "  * @Last Changed : TIMESTAMP")
+            call append(line(".")+7, "  * @Brief        : ")
+            call append(line(".")+8, "  ********************************************************************************")
+            call append(line(".")+9, "  */")
+            call append(line(".")+10, "")
+            call append(line(".")+11, "/* Inlcude ---------------------------------------------------------------------*/")
+            call append(line(".")+12, "")
+            call append(line(".")+13, "/** @addtogroup Template_Project")
+            call append(line(".")+14, "  * @{")
+            call append(line(".")+15, "  */")
+            call append(line(".")+16, "")
+            call append(line(".")+17, "/* Private typedef -------------------------------------------------------------*/")
+            call append(line(".")+18, "/* Private define --------------------------------------------------------------*/")
+            call append(line(".")+19, "/* Private macro define --------------------------------------------------------*/")
+            call append(line(".")+20, "/* Private variables -----------------------------------------------------------*/")
+            call append(line(".")+21, "/* Private function declaration ------------------------------------------------*/")
+            call append(line(".")+22, "/* Private functions -----------------------------------------------------------*/")
+            call append(line(".")+23, "/**")
+            call append(line(".")+24, "  * @brief  ")
+            call append(line(".")+25, "  * @param  ")
+            call append(line(".")+26, "  * @retval ")
+            call append(line(".")+27, "  */")
+            call append(line(".")+28, "void function(void)")
+            call append(line(".")+29, "{")
+            call append(line(".")+30, "")
+            call append(line(".")+31, "}")
+            call append(line(".")+32, "")
+            call append(line(".")+33, "/**")
+            call append(line(".")+34, "  * @}")
+            call append(line(".")+35, "  */")
+            call append(line(".")+36, "")
+            call append(line(".")+37, "/************************** Coopyright (C) Company YEAR *******END OF FILE*******/")
+        endif
+        if expand("%:e")=='h'
+            call setline(1, "/**")
+            call append(line("."),   "  ********************************************************************************")
+            call append(line(".")+1, "  * @File Name    : ".expand("%"))
+            call append(line(".")+2, "  * @Author       : Jungle")
+            call append(line(".")+3, "  * @Mail         : ")
+            call append(line(".")+4, "  * @Created Time : ".strftime("%c"))
+            call append(line(".")+5, "  * @Version      : V1.0")
+            call append(line(".")+6, "  * @Last Changed : TIMESTAMP")
+            call append(line(".")+7, "  * @Brief        : ")
+            call append(line(".")+8, "  ********************************************************************************")
+            call append(line(".")+9, "  */")
+            call append(line(".")+10, "")
+            call append(line(".")+11, "/* Define to prevent recursive inclusion ---------------------------------------*/")
+            call append(line(".")+12, "#ifndef __HEADER_H_")
+            call append(line(".")+13, "#define __HEADER_H_")
+            call append(line(".")+14, "")
+            call append(line(".")+15, "/* Inlcude ---------------------------------------------------------------------*/")
+            call append(line(".")+16, "")
+            call append(line(".")+17, "/* Exported typedef -------------_----------------------------------------------*/")
+            call append(line(".")+18, "/* Exported define -------------------------------------------------------------*/")
+            call append(line(".")+19, "/* Exported macro define -------------------------------------------------------*/")
+            call append(line(".")+20, "/* Exported variables ----------------------------------------------------------*/")
+            call append(line(".")+21, "/* Exported functions ----------------------------------------------------------*/")
+            call append(line(".")+22, "")
+            call append(line(".")+23, "#endif /* __HEADER_H _ */")
+            call append(line(".")+24, "")
+            call append(line(".")+25, "/************************** Coopyright (C) Company YEAR *******END OF FILE*******/")
+        endif
+    endfunc
+    autocmd BufNewFile * normal G   " end of the new file
+
+    autocmd BufWritePre,FileWritePre *.c,*.h,*.sh,*.py ks|call LastChanged()|'s
+    func! LastChanged()     " auto add last changed data
+        let l = line("$")
+        
+        exe "1,".l."g/Last Changed : /s/Last Changed : .*/Last Changed : ".strftime("%c")
+    endfunc
+" }
