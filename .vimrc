@@ -29,12 +29,30 @@ endif
     set nobackup                    " never backup
     set noswapfile                  " close switch file
     "set t_ti= t_te=                 " exit Vim, the context is dispaly in the terminal
+
+    " set mandatory keyboard use
+    set mouse-=a
+    map <Left> <Nop>
+    map <Right> <Nop>
+    map <Up> <Nop>
+    map <Down> <Nop>
+
+    " smart way to monv between windows
+    nnoremap <C-j> <C-W>j
+    nnoremap <C-k> <C-W>k
+    nnoremap <C-h> <C-W>h
+    nnoremap <C-l> <C-W>l
+
+    inoremap <C-j> <Down>
+    inoremap <C-k> <Up>
+    inoremap <C-h> <Left>
+    inoremap <C-l> <Right>
 " }
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 
-" Vim-UI set {    
+" Vim-UI set {
     " theme {
         set background=dark
         let g:solarized_termtrans=256
@@ -61,17 +79,17 @@ endif
     set tabstop=4	                " set the edit TAB takes up space
     set shiftwidth=4                " set the format TAB takes up space
     "set softtabstop=4              " the continue spaces as a TAB character
-    
+
     set laststatus=2                " alaways shows status bar
-    set ruler                       " show the current cursor position 
-    set number                      " open ling number 
-    
+    set ruler                       " show the current line info in the lower right corner
+    set number                      " open ling number
+
     set nowrap                      " no folding current row
     set autoindent                  " the current line format is applied to the next line
     set cursorline                  " highlighting current line
     "set cursorcolumn               " highlighting current column
     set showmatch                   " highlighting the matching brackets
-    
+
     "set gcr=a:block-blinon0        " ban cursor blink
 
     "set guioptions-=l              " ban on the scroll bar dispaly
@@ -118,21 +136,28 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 "Pluglin 'vim-scripts/phd'
-Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'majutsushi/tagbar'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
 "Plugin 'mileszs/ack.vim'
 Plugin 'dyng/ctrlsf.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Yggdroot/LeaderF'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'ShowTrailingWhiteSpace'
 Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
+Plugin 'Tabular'                " automatic alignment
 call vundle#end()
 
 filetype indent on              " different file smart indent
@@ -140,7 +165,12 @@ filetype plugin on              " load the corrrsponding plug-in for different f
 filetype plugin indent on       " open antomatic completion
 
 " set powerline theme style
-let g:Powerline_colorscheme='solarized256'
+"let g:Powerline_colorscheme='solarized256'
+
+" set airling theme stylr
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts=1
+set laststatus=2
 
 " set indent guides
 let g:indent_guides_enable_on_vim_startup=1	" follow VIM startup
@@ -149,7 +179,7 @@ let g:indent_guides_guide_sizw=1	    	" color piece width
 ":nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 " *.c** & *.h, fast switch
-nmap <M-s> :FSHere<CR>      " switch *.cpp & *.h
+nmap <M-t> :FSHere<CR>      " switch *.cpp & *.h
 
 " set Ctags
 "set tags=./tags,./*/tags
@@ -160,8 +190,8 @@ map <F8> :TagbarToggle<CR>  " ON/OFF tagbar
 let tagbar_left=1           " set the position of the tagbar
 let tagbar_width=32         " set the width of the child window tags
 let g:tagbar_compact=1      " the window tags not show help info
-let g:tagbar_sort=0         " 
-let g:tagbar_type_cpp = {   
+let g:tagbar_sort=0         "
+let g:tagbar_type_cpp = {
         \'kinds' : [
             \ 'c:classes:0:0',
             \ 'd:macros:0:0',
@@ -194,39 +224,74 @@ let g:tagbar_type_cpp = {
             \ 'union'     : 'u'
         \ }
     \ }
+" let g:tagbar_type_markdown = {
+        " \ 'ctagstype' : 'markdown',
+        " \ 'sort'      : 0,
+        " \ 'kinds'     : [
+            " \ 'h:sections'
+        " \ ]
+    " \ }
 
-" set indexer 
+" set easymotion
+let g:EasyMotion_leader_key='f'
+
+" set indexer
 let g:indexer_ctagsCommandLineOptions="--c++-kinds=+c+d+e+f+l+m+n+p+s+t+u+v+x --fields=+iaSl --extra=+q"
 
 " set ctrlsf
 let g:ctrlsf_ackprg='ack'              " set default
 nnoremap <M-f> :CtrlSF<CR>             " search/find words
 
+" set multiple-sursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<S-n>'
+let g:multi_cursor_prev_key='<S-p>'
+let g:multi_cursor_skip_key='<S-s>'
+let g:multi_cursor_quit_key='<ESC>'
+
+" set LeaderF
+map <M-s> :Leaderf
+
 " set nerdcommenter
 map <M-c> <Leader>cc                   " add comment
 map <M-u> <Leader>cu                   " cancel comment
-map <M-a> <Leader>ca                   " seitch /*  */ & //
+map <M-a> <Leader>ca                   " switch /*  */ & //
 let g:NERDSpaceDelims=1                " add Spaceson both sides
+
+" set ShowTrailingWhitespace
+let g:ShoeTrailingWhitespace=1         " default ON; 1 on, 0 off
+highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 
 " set ultisnips
 "let g:UltiSnipsSnippetDir="~/.vim/bundle/ultisnips"
 "let g:UltiSnipsSnippetDirectories=['~/.vim/bundle/ultisnips/UltiSnips']
 "let g:UltiSnipsExpandTrigger="<M-f>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsJumpForwardTrigger="<M-n>"
+"let g:UltiSnipsJumpBackwardTrigger="<M-m>"
 
 " set YouComplete
 set runtimepath+=~/.vim/bundle/YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files=1             " open YCM tags completion 
+" ignore some files
+let g:ycm_filetype_blacklist = {
+    \ 'tagbar'       : 1,
+    \ 'qf'           : 1,
+    \ 'notes'        : 1,
+    \ 'markdown'     : 1,
+    \ 'unite'        : 1,
+    \ 'text'         : 1,
+    \ 'vimwiki'      : 1,
+    \ 'gitcommit'    : 1,
+\ }
+let g:ycm_collect_identifiers_from_tags_files=1             " open YCM tags completion
 let g:ycm_complete_in_comments=1
 "let g:ycm_complete_in_strings=1
-"let g:ycm_collect_identifiers_from_comments_and_strings=1   " 
-let g:ycm_seed_identfiers_with_syntax=1                     " grammar keyword completion  
-let g:ycm_confirm_extra_conf=0                              " load file .ycm_extra_conf.py  
-let g:ycm_key_list_select_completion=['<M-n>', '<Down>']    " completion the full list shortcut key; default TAB  
-let g:ycm_key_list_previous_completion=['<M-m>', '<Up>']    " completion the full list shortcut key; default TAB 
+"let g:ycm_collect_identifiers_from_comments_and_strings=1   "
+let g:ycm_seed_identfiers_with_syntax=1                     " grammar keyword completion
+let g:ycm_confirm_extra_conf=0                              " load file .ycm_extra_conf.py
+let g:ycm_key_list_select_completion=['<M-n>', "<Down>"]    " completion the full list shortcut key; default TAB
+let g:ycm_key_list_previous_completion=['<M-m>', "<Up>"]    " completion the full list shortcut key; default TAB
 "let g:ycm_show_diagnostics_ui=0
-let g:ycm_min_num_of_chars_for_completion=2                 " lists the matches frim the second character 
+let g:ycm_min_num_of_chars_for_completion=2                 " lists the matches frim the second character
 let g:ycm_cache_comnifunc=0                                 " cache matching entries are not allowed
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 "inoremap <leader>; <C-x><C-o>
@@ -238,11 +303,13 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cp
 
 " set NERDTree
 nmap <F9> :NERDTreeToggle<CR>
-let NERDTreeWinSize=32                  " set width 
-let NERDTreeWinPos="right"              " set position 
-let NERDTreeShoeHidden=1                " show the hidden files 
-let NERDTreeMinimalUI=1                 " the window tags not show help info 
-let NERDTreeAutoDeleteBuffer=1          " Automatically deletes files when deletes files buffer 
+let NERDTreeShowBookmarks=1             " set NERDTree book marks default on
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\hg$', '^\.svn$', '\.bzr$']
+let NERDTreeWinSize=32                  " set width
+let NERDTreeWinPos="right"              " set position
+let NERDTreeShoeHidden=1                " show the hidden files
+let NERDTreeMinimalUI=1                 " the window tags not show help info
+let NERDTreeAutoDeleteBuffer=1          " Automatically deletes files when deletes files buffer
 
 " set minibuffexploer
 "map <F7>  :MBEToggle<CR>
@@ -255,13 +322,16 @@ map <M-w> :bp<CR>                       " switch window
 let g:miniBufExplModThanOne=0
 
 " alt key mapping
-set ttimeout ttimeoutlen=100    " set keypad code to judfe time 
+set ttimeout ttimeoutlen=100    " set keypad code to judfe time
 " set *.cpp & *.h switch
-exec "set <M-s>=\es"
-inoremap <M-s> <esc>sa
-" set CtrlSF search
+exec "set <M-t>=\et"
+inoremap <M-t> <esc>ta
+" set CtrlSF find
 exec "set <M-f>=\ef"
 inoremap <M-f> <esc>fa
+" set LeaderF search
+exec "set <M-s>=\es"
+inoremap <M-s> <esc>sa
 " set /*  */
 exec "set <M-c>=\ec"
 inoremap <M-c> <esc>ca
@@ -389,8 +459,15 @@ inoremap <M-w> <esc>wa
 
     autocmd BufWritePre,FileWritePre *.c,*.h,*.sh,*.py ks|call LastChanged()|'s
     func! LastChanged()     " auto add last changed data
-        let l = line("$")
-        
+        if line ("$") > 15
+            let l = 15
+        else
+            let l = line("$")
+        endif
         exe "1,".l."g/Last Changed : /s/Last Changed : .*/Last Changed : ".strftime("%c")
     endfunc
+
+    " strip all trailing whitespace in the current file
+    "autocmd BufWritePre *.c,*.cpp,*.h,*.sh,*.py :%s/\s\+$//<CR>:let @/=''<CR>
+    autocmd BufWritePre * :%s/\s\+$//e
 " }
