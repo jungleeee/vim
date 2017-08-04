@@ -157,7 +157,10 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
-Plugin 'Tabular'                " automatic alignment
+Plugin 'Tabular'                    " automatic alignment
+Plugin 'plasticboy/vim-markdown'    "
+Plugin 'iamcco/markdown-preview.vim'
+"Plugin 'iamcco/mathjax-support-for-mkdp'
 call vundle#end()
 
 filetype indent on              " different file smart indent
@@ -299,7 +302,7 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cp
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |
 "nnoremap <M-=> :YcmCompleter GoToDefinition<CR>             " jump to define
 "nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"nnoremap <M-=> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <M-=> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " set NERDTree
 nmap <F9> :NERDTreeToggle<CR>
@@ -320,6 +323,16 @@ map <M-w> :bp<CR>                       " switch window
 "let g:miniBufExplMapCTabSwitchBufs=1    " use <C-Tab> switch window
 "let g:miniBufExplModSelTarget=1
 let g:miniBufExplModThanOne=0
+
+" set markdown
+let g:mkdp_auto_start=0                 " set 1, the vim will auto open preview window once enter markdown buffer
+let g:mkdp_auto_open=0                  " set 1, the vim will auto open preciew window when you edit the markdown file
+let g:mkdp_auto_close=1                 " set 1, the vim will auto close current preview window when change from markdown buffer to another buffer
+let g:mkdp_refresh_slow=0               " set 1, the vim will just refresh markdown when save the buffer or leave frim insert mode,default 0 is auto refresh markdown as you edit or move cursor
+let g:mkdp_command_for_global=0         " set 1, the markdown preview command can be use for all files, by default it just can be use in markdown file
+let g:mkdp_path_to_chrome="google-chrome"
+map <F6> <Plug>MarkdownPreview
+map <F7> <Plug>StopMarkdownPreview
 
 " alt key mapping
 set ttimeout ttimeoutlen=100    " set keypad code to judfe time
