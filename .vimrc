@@ -139,7 +139,8 @@ Plugin 'tomasr/molokai'
 "Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
+"Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/indexer.tar.gz'
@@ -176,10 +177,17 @@ let g:airline_powerline_fonts=1
 set laststatus=2
 
 " set indent guides
-let g:indent_guides_enable_on_vim_startup=1	" follow VIM startup
-let g:indent_guides_start_level=2	    	" starting from the second visual diapaly the indentation
-let g:indent_guides_guide_sizw=1	    	" color piece width
+"let g:indent_guides_enable_on_vim_startup=1	" follow VIM startup
+"let g:indent_guides_start_level=2	    	" starting from the second visual diapaly the indentation
+"let g:indent_guides_guide_sizw=1	    	" color piece width
 ":nmap <silent> <leader>i <Plug>IndentGuidesToggle
+
+" set indentLine
+"let g:indentLine_enable = 1
+"let g:indentLine_char = '┆' '│'  '⎸' '▏' '¦'
+"let g:indentLine_color_term = 239
+"map <C-i> :IndentLineToggle<CR>             " open or close indentLine
+
 
 " *.c** & *.h, fast switch
 nmap <M-t> :FSHere<CR>      " switch *.cpp & *.h
