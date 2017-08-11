@@ -10,28 +10,28 @@
 ###前言
 
 ```
-        学习、总结，交流，进步！
-        插件与脚本使得VIM强大，毋庸置疑！
+        学习、总结，交流，进步！    
+        插件与脚本使得VIM强大，毋庸置疑！    
 ```
 
-全程参考:[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)
-其余参考在文中将会在相关部分列出。
-文中内容如有错误，请指正！
-原创，转载请注明出处！
+全程参考:[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)<br />
+其余参考在文中将会在相关部分列出。<br />    
+文中内容如有错误，请指正！<br />
+原创，转载请注明出处！<br />
 
 ---
 ###Ready
 
-VIM装请自行搞定。版本7.x + 。
-请检查用户目录下是否存在: `.vim/`文件夹和`.vimrc`用户配置文件，可以使用命令 `ls -l ~` 查看。
-`.vim/`文件夹用于存放后续所有插件。
-`.vimrc`用于配置VIM功能，包括基本语法、插件配置以及部分脚本等。
-如果没有请自行创建。
+VIM装请自行搞定。版本7.x + 。<br />
+请检查用户目录下是否存在: `.vim/`文件夹和`.vimrc`用户配置文件，可以使用命令 `ls -l ~` 查看。<br />
+`.vim/`文件夹用于存放后续所有插件。<br />
+`.vimrc`用于配置VIM功能，包括基本语法、插件配置以及部分脚本等。<br />
+如果没有请自行创建。<br />
 
 ---
 ###基本配置
 
-可以直接添加到`.vimrc`文件中
+可以直接添加到`.vimrc`文件中<br />
 
 ```
 " General set
@@ -66,14 +66,14 @@ VIM装请自行搞定。版本7.x + 。
 ---
 ###插件管理
 
-[Vundle](https://github.com/VundleVim/Vundle.vim)是一个行之有效的插件，接管`.vim/`文件夹，为每一个插件指定唯一目录。更清晰、智能。
-[Vundle](https://github.com/VundleVim/Vundle.vim)会接管`.vim/`文件夹下的所有目录，所以先清空。在通过命令安装Vundle:
+[Vundle](https://github.com/VundleVim/Vundle.vim)是一个行之有效的插件，接管`.vim/`文件夹，为每一个插件指定唯一目录。更清晰、智能。<br />
+[Vundle](https://github.com/VundleVim/Vundle.vim)会接管`.vim/`文件夹下的所有目录，所以先清空。在通过命令安装Vundle:<br />
 
 ```
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-然后在`.vimrc`中增加配置:
+然后在`.vimrc`中增加配置:<br />
 
 ```
 " vundle set
@@ -552,8 +552,11 @@ ShowTrailingWhiteSpace](https://github.com/vim-scripts/ShowTrailingWhitespace)�
 我自己改变了一哈，每次保存文件的时候，自动清除当前文件中所有行尾的空格:
 
 ```
+    "autocmd BufWritePre *.c,*.cpp,*.h,*.sh,*.py :%s/\s\+$//e
     autocmd BufWritePre * :%s/\s\+$//e
 ```
+
+注释掉的配置，表示只在这几个类型的文件执行保存文件命令时自动清除行尾空格，文件类型自己根据需要添加。
 
 ######模板补全
 
