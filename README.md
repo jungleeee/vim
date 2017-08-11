@@ -12,21 +12,21 @@
 ```
         学习、总结，交流，进步！
         插件与脚本使得VIM强大，毋庸置疑！
-```  
+```
 
-全程参考:[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  
-其余参考在文中将会在相关部分列出。  
-文中内容如有错误，请指正！  
-原创，转载请注明出处！  
+全程参考:[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)
+其余参考在文中将会在相关部分列出。
+文中内容如有错误，请指正！
+原创，转载请注明出处！
 
 ---
 ###Ready
 
-VIM装请自行搞定。版本7.x + 。  
-请检查用户目录下是否存在: `.vim/`文件夹和`.vimrc`用户配置文件，可以使用命令 `ls -l ~` 查看。  
-`.vim/`文件夹用于存放后续所有插件。  
-`.vimrc`用于配置VIM功能，包括基本语法、插件配置以及部分脚本等。  
-如果没有请自行创建。  
+VIM装请自行搞定。版本7.x + 。
+请检查用户目录下是否存在: `.vim/`文件夹和`.vimrc`用户配置文件，可以使用命令 `ls -l ~` 查看。
+`.vim/`文件夹用于存放后续所有插件。
+`.vimrc`用于配置VIM功能，包括基本语法、插件配置以及部分脚本等。
+如果没有请自行创建。
 
 ---
 ###基本配置
@@ -66,8 +66,8 @@ VIM装请自行搞定。版本7.x + 。
 ---
 ###插件管理
 
-[Vundle](https://github.com/VundleVim/Vundle.vim)是一个行之有效的插件，接管`.vim/`文件夹，为每一个插件指定唯一目录。更清晰、智能。  
-[Vundle](https://github.com/VundleVim/Vundle.vim)会接管`.vim/`文件夹下的所有目录，所以先清空。在通过命令安装Vundle:  
+[Vundle](https://github.com/VundleVim/Vundle.vim)是一个行之有效的插件，接管`.vim/`文件夹，为每一个插件指定唯一目录。更清晰、智能。
+[Vundle](https://github.com/VundleVim/Vundle.vim)会接管`.vim/`文件夹下的所有目录，所以先清空。在通过命令安装Vundle:
 
 ```
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -87,7 +87,8 @@ VIM装请自行搞定。版本7.x + 。
     "Plugin 'Lokaltog/vim-powerline'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'nathanaelkane/vim-indent-guides'
+    "Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'Yggdroot/indentLine'
     Plugin 'derekwyatt/vim-fswitch'
     Plugin 'majutsushi/tagbar'
     Plugin 'vim-scripts/indexer.tar.gz'
@@ -216,7 +217,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 
 文件代码量大时，可能会对分析代码产生干扰，或者通过折叠函数调用与定义之间的代码，可以更加直观的理解函数功能。
 VIM自身支持多种折叠：手动折叠(manual)、基于缩进进行折叠(indent)、基于语义进行折叠(syntax)、未更改文本构成折叠等
-等。其中indent、syntax较为适合编程。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.3节。  
+等。其中indent、syntax较为适合编程。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.3节。
 
 `
     操作: za: 打开或关闭当前折叠；zM: 关闭多有折叠；zR: 打开多有折叠。
@@ -233,19 +234,19 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 ```
     set laststatus=2                " 总是显示状态栏
-    
+
     "Plugin 'Lokaltog/vim-powerline'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
 ```
 
 [vim-powerline](https://github.com/Lokaltog/vim-powerline) 和 [vim-airline](https://github.com/vim-airline/vim-airline) 都是状态栏美化插件，选用其一，注释另外一个。[vim-airline-theme](https://github.com/vim-airline/vim-airline-theme) 提供 `vim-airline` 的主题，
-在其路径 `vim-airline-theme/doc/` 下文件 `airline-themes.txt` 对于可使用的主题有介绍。
+在其路径 `vim-airline-theme/doc/` 下文件 `airline-themes.txt` 有对于可使用的主题的介绍。
 
 状态栏配置，在`.vimrc`文件中添加以下内容
 
 ```
-    " set powerline theme style                                                 
+    " set powerline theme style
     let g:Powerline_colorscheme='solarized256'
 ```
 
@@ -259,10 +260,11 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 ######可视化缩进
 
 ```
-    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'Yggdroot/indentLine'
+    "Plugin 'nathanaelkane/vim-indent-guides'
 ```
 
-很多代码规范中建议代码嵌套最多不能超过3层，但难免有更多层出现。[vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides)插件提供可视化缩进，将相同缩进
+很多代码规范中建议代码嵌套最多不能超过3层，但难免有更多层出现。[vim-indent-guides ](https://github.com/nathanaelkane/vim-indent-guides)插件提供可视化缩进，将相同缩进
 的代码关联起来，`vim-indent-guides`通过识别制表符来绘制缩进连接线。在`.vimrc`文件中添加如下配置:
 
 ```
@@ -272,7 +274,18 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
     let g:indent_guides_guide_sizw=1            " 色块宽度
 ```
 
-本人配置完成后使用，发现色块宽度占了4个空格，原因未查。效果如下图所示:
+本人配置完成后使用，发现色块宽度占了4个空格，原因未查。
+
+另外一个插件[indentLine](https://github.com/Yggdroot/indentLine) 是同胞写的，在显示可视化缩进时，只有一根细线，甚和我意。推荐一哈，后面还有一款他写的
+插件`LeaderF`，提供文件搜索功能，后面在介绍。`indentLine`基本上可以不用配置，但提供几个可选用配置项。
+
+```
+    " set indentLine
+    "let g:indentLine_enable = 1                    " 默认就是开启的
+    "let g:indentLine_char = '┆' '│'  '⎸' '▏' '¦'   " 配置可视化缩进时的显示符号
+    "let g:indentLine_color_term = 239              " 参看作者的解释
+    "map <C-i> :IndentLineToggle<CR>                " 映射快捷键用来开启/关闭可是话缩进
+```
 
 ######文件切换
 
@@ -284,11 +297,11 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 中添加:
 
 ```
-    " *.c** & *.h, fast switch                                                  
+    " *.c** & *.h, fast switch
     nmap <M-t> :FSHere<CR>      " 切换文件 *.c/cpp/.. & *.h
 ```
 
-我在这里使用了`Alt+t`组合键，`M`代表`Alt`键。个人觉得这个键，使用很方便。插播一下`Alt`键说明:  
+我在这里使用了`Alt+t`组合键，`M`代表`Alt`键。个人觉得这个键，使用很方便。插播一下`Alt`键说明:
 
 ```
     这个键
@@ -297,9 +310,9 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 ######标签系统
 
 代码中的变量、宏、结构、枚举、类、函数、对象等等这些统称为标识符，每个标识符的定义、所在文件的行位置、所在文件
-的路径等信息就是标签（tag)。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.6节。  
+的路径等信息就是标签（tag)。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.6节。
 
-`Exuberant Ctags`就是一款经典的用于生成代码标签信息的工具，支持数十种语言。请在终端中执行命令安装。  
+`Exuberant Ctags`就是一款经典的用于生成代码标签信息的工具，支持数十种语言。请在终端中执行命令安装。
 安装完成后，在代码目录中执行
 
 ```
@@ -308,7 +321,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 将会在当前目录下生成`tag`文件，包含了当前目录下所有文件的标识符集合。
 
-标签除了可以很直观展示当前文件中的各种信息，还能提供强大的导航和补全功能，接下来将会一一介绍。  
+标签除了可以很直观展示当前文件中的各种信息，还能提供强大的导航和补全功能，接下来将会一一介绍。
 
 在生成`tag`文件后，可以通过插件 [tagbar](https://github.com/majutsushi/tagbar) 把从当前代码文件中提取出的所有标识符放在一个侧边子窗口中，并且能够按语法
 规则将标识符进行归类。`tagbar`安装完成后在`.vimrc`文件中添加如下配置:
@@ -357,13 +370,13 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 进入之前生成`tag`文件的目录下，打开某一源文件后，通过快捷键`F8` 打开`tagbar`子窗口，可以通过快捷键`ctrl+w+w`快
 速切换子窗口，类似`alt+tab`的功能，或者使用前面定义的`ctrl+h/i/j/k`在`normal`模式下进行窗口切换，进入到`tagbar`
-窗口中。  
+窗口中。
 
 在标识符列表中选中对应标识符后即可跳转至源码中对应位置;在源码中停顿几秒，`tagbar`将高亮对应标识符。`tagbar`有两
 种排序方式，一是按标签字母先后顺序；一是按标签在源码中出现的先后顺序。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)
-4.7节。  
+4.7节。
 
-注释掉`let g:tagbar_sort=0`，将会使用字母顺序排序。  
+注释掉`let g:tagbar_sort=0`，将会使用字母顺序排序。
 
 开发时代码不停在变更，如果每次都需要手动执行命令生成新的标签文件，太麻烦。通过引入插件 [indexer](https://github.com/vim-scripts/indexer.tar.gz) 实现自动生成标签
 并引入。`indexer` 依赖 [DfrankUtil](https://github.com/vim-scripts/DfrankUtil)、[vimprj](https://github.com/vim-scripts/vimpr) 两个插件，请一并安装。 此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide) 4.7节。
@@ -383,7 +396,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
     let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
 ```
 
-另外，`indexer` 还有个自己的配置文件，用于设定各个工程的根目录路径，配置文件位于`~/.indexer_files`，内容格式为:  
+另外，`indexer` 还有个自己的配置文件，用于设定各个工程的根目录路径，配置文件位于`~/.indexer_files`，内容格式为:
 
 ```
     [project_name]
@@ -392,41 +405,41 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 方括号内为自动生成的标签文件名字，一般更工程一样。路径为工程的代码目录，不要包含构建目录，文档目录等，以免产生
 非代码文件的标签信息。当打开以上目录任何代码文件时，插件`indexer`便对整个目录创建标签文件，当代码有更新，文件
-保存时，`indexer`将自动调用`ctags`更新标签文件。`indexer`生成的标签文件以方括号内的名字命名，位于目录 
-`~/.indexer_files_tags/` 下，并自动引入`Vim`中。此处3段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide) 4.7节。  
+保存时，`indexer`将自动调用`ctags`更新标签文件。`indexer`生成的标签文件以方括号内的名字命名，位于目录
+`~/.indexer_files_tags/` 下，并自动引入`Vim`中。此处3段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide) 4.7节。
 
 ######声明/定义跳转
 
-主要两类导航: 基于标签的跳转和基于语义的跳转。  
+主要两类导航: 基于标签的跳转和基于语义的跳转。
 
 既然`Vim`可以引入标签，说明`Vim`能识别标签。虽然标签文件中并无行号，但已经有标签所在文件以及标签所在行的完整内
 容，`Vim`只需切换至对应文件，再在文件内做内容查找即可找到对应行。换言之，只要有对应的标签文件，`Vim`就能根据标
-签跳转至标签定义处。  
+签跳转至标签定义处。
 
 在前述已生成标签文件的项目目录中打开任意文件，将光标定位到某一函数名或变量上，键入快捷键`g]`，`Vim`将罗列处该
-函数或变量名所有的标签候选列表，按需要键入编号后按`Enter`键即可跳转进入。   
+函数或变量名所有的标签候选列表，按需要键入编号后按`Enter`键即可跳转进入。
 
-基于语义的跳转是在后面介绍补全时的一款插件`YCM`的功能。此处直接给出快捷键设置，在`.vimrc`文件中添加配置:  
+基于语义的跳转是在后面介绍补全时的一款插件`YCM`的功能。此处直接给出快捷键设置，在`.vimrc`文件中添加配置:
 
 ```
-    "nnoremap <M-=> :YcmCompleter GoToDefinition<CR>                " jump to define   
+    "nnoremap <M-=> :YcmCompleter GoToDefinition<CR>                " jump to define
     "nnoremap <M-=> :YcmCompleter GoToDeclaration<CR>               " jump to declaration
     nnoremap <M-=> :YcmCompleter GoToDefinitionElseDeclaration<CR>  " jump to define or declaration
 ```
 
 `YCM`提供这三个快捷键定义，意思很明了，可以根据自己情况进行配置，当然需要配置不同的快捷键。
 
-但是个人感觉，这两个插件的跳转功能都不够好用。  
+但是个人感觉，这两个插件的跳转功能都不够好用。
 
 写到这儿，有点不想写了。很多东西在我参考的文章中都很详细，很多地方都是摘抄过来的，所以后续我回直接贴出我所介绍
 的插件在原文章中的章节位置，然后主要介绍我所遇到的一些小问题和解决办法，以及我的快捷键配置，提供十分有限的参考
-价值，谢谢。  
+价值，谢谢。
 
 #######快速移动
 
-[vim-easymotion](https://github.com/easymotion/vim-easymotion) 请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  8.3节。  
+[vim-easymotion](https://github.com/easymotion/vim-easymotion) 请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  8.3节。
 
-`.vimrc`文件配置如下:  
+`.vimrc`文件配置如下:
 
 ```
     Plugin 'easymotion/vim-easymotion'
@@ -442,18 +455,18 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 #######内容查找
 
-详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.8节。  
+详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.8节。
 
-[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim) 后端调用`ack`一定记得安装。  
+[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim) 后端调用`ack`一定记得安装。
 
-`.vimrc`文件中添加配置如下:  
+`.vimrc`文件中添加配置如下:
 
 ```
     Plugin 'dyng/ctrlsf.vim'
 ```
 
 ```
-" set ctrlsf                                                           
+" set ctrlsf
     let g:ctrlsf_ackprg='ack'              " set default
     nnoremap <M-f> :CtrlSF<CR>             " 键入快捷键alt+f，搜索光标当前字符串的匹配项
 ```
@@ -462,16 +475,16 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 ######内容替换
 
-详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.9节。  
+详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.9节。
 
-[vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) 配合`ctrlsf`插件，实现多个不同位置的字符串替换。  
+[vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) 配合`ctrlsf`插件，实现多个不同位置的字符串替换。
 `.vimrc`文件中添加如下配置:
 ```
     Plugin 'terryma/vim-multiple-cursors'
 ```
 
 ```
-    " set multiple-sursors                                                 
+    " set multiple-sursors
     let g:multi_cursor_use_default_mapping=0
     let g:multi_cursor_next_key='<S-n>'
     let g:multi_cursor_prev_key='<S-p>'
@@ -480,9 +493,9 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 ```
 
 `S`表示`Shift`键。在通过`ctrlsf`插件列举处匹配项后，则可以通过快捷键`S-n`选中当前匹配项并跳到下一个匹配项，键
-入`S-s`则可以跳过当前项而选中下一个，可以通过`S-p`回退到前一个匹配项。键入`Esc`推出插件。  
+入`S-s`则可以跳过当前项而选中下一个，可以通过`S-p`回退到前一个匹配项。键入`Esc`推出插件。
 
-`Vim`自带很强大的替换功能，这里就不介绍了。建议了解一哈，一般会看这篇文档的，都有可能在面试的时候被提问。  
+`Vim`自带很强大的替换功能，这里就不介绍了。建议了解一哈，一般会看这篇文档的，都有可能在面试的时候被提问。
 
 ######文件搜索
 
@@ -491,18 +504,18 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 ######快速注释
 
-详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.1节。  
+详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.1节。
 
-[NERD Commenter](https://github.com/scrooloose/nerdcommenter) 能够快速注释/取消注释，并且提供不同的注释方式。  
+[NERD Commenter](https://github.com/scrooloose/nerdcommenter) 能够快速注释/取消注释，并且提供不同的注释方式。
 
-在`.vimrc`文件中添加配置: 
+在`.vimrc`文件中添加配置:
 
 ```
     Plugin 'scrooloose/nerdcommenter'
 ```
 
 ```
-    " set nerdcommenter                                                    
+    " set nerdcommenter
     map <M-c> <Leader>cc                   " add comment
     map <M-u> <Leader>cu                   " cancel comment
     map <M-a> <Leader>ca                   " switch /*  */ & //
@@ -510,5 +523,64 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 ```
 
 在`Vim` `normal`模式下，键入`v`或者`V`进入可视化模式，通过`h/j/k/l`选中需要注释的部分，键入快捷键`alt+c`则注释
-当前选中代码。反之，选中需要取消注释的部分，键入快捷键`alt+u`取消注释。`alt+a`可以切换注释方式，但这个快捷键定
-义跟某些有冲突，将就可用，也可以自定义其他。
+当前选中代码。反之，选中需要取消注释的部分，键入快捷键`alt+u`取消注释。`alt+a`可以切换注释方式:`/* */或者//`，
+但这个快捷键定义跟某些有冲突，将就可用，也可以自定义其他。
+
+######行尾空格
+
+这个插件是我在知乎的一个回答中了解到的，有实用性，提供参考。贴上这个知乎的帖子: https://www.zhihu.com/question/19989337
+写程序时，虽然行尾的空格都看不见，遇上了的话，有点强迫症的肯定受不了。为了能够显示行尾的空格，需要[
+ShowTrailingWhiteSpace](https://github.com/vim-scripts/ShowTrailingWhitespace)这个插件。在`.vimrc`中添加如下内容:
+
+```
+    Plugin 'vim-scripts/ShowTrailingWhiteSpace'
+```
+
+```
+    " set ShowTrailingWhitespace
+    let g:ShoeTrailingWhitespace=1                          " default ON; 1 on, 0 off
+    highlight ShowTrailingWhitespace ctermbg=Red guibg=Red  " 可以理解为高亮行尾空格
+```
+
+帖子中的回答者，还提供了一个快捷键，自动清理文件中所有行尾的空格:
+
+```
+    "strip all trailing whitespace in the current file
+    nnoremap <leader>w :%s/\s\+$//<cr>:let @/=''<CR>
+```
+
+我自己改变了一哈，每次保存文件的时候，自动清除当前文件中所有行尾的空格:
+
+```
+    autocmd BufWritePre * :%s/\s\+$//e
+```
+
+######模板补全
+
+详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.2节。
+
+[ultisnips](https://github.com/SirVer/ultisnhips) 提供相同代码段的快速输入，比如`if-else`、`switch-case`语句。
+
+在`.vimrc`文件中添加如下配置:
+
+```
+    Plugin 'SirVer/ultisnips'
+    "Plugin 'honza/vim-snippets'
+```
+
+`ultisnips`补全时用于选中的键为`tab`，与后面将要提到的插件`YCM`的快捷键有冲突，所以提供改建的配置方式。
+个人选择改`YCM`的快捷键。
+
+```
+    " set ultisnips
+    "let g:UltiSnipsExpandTrigger="<Leader><tab>"
+    "let g:UltiSnipsJumpForwardTrigger="<M-n>"
+    "let g:UltiSnipsJumpBackwardTrigger="<M-m>"
+```
+
+另外需要说明的一点是，下载`ultisnips`插件后，默认是未提供模板补全用的文件的。需要自己下载。
+一种方式时安装插件[vim-snippets]( https://github.com/honza/vim-snippets)，复制`~/.vim/bundle/vim-snippets/UltiSnips`整个文件夹到`~/,vim/bundle/ultisnips`
+目录下面即可。另一种是自己到`github`上去下载 https://github.com/honza/vim-snippets ，其实内容都是一样的。我认为这个
+插件最好的点是支持自己定义，很强大。
+
+
