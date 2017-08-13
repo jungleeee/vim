@@ -217,7 +217,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 
 文件代码量大时，可能会对分析代码产生干扰，或者通过折叠函数调用与定义之间的代码，可以更加直观的理解函数功能。<br />
 VIM自身支持多种折叠：手动折叠(manual)、基于缩进进行折叠(indent)、基于语义进行折叠(syntax)、未更改文本构成折叠等
-等。其中indent、syntax较为适合编程。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgn<br />u/use_vim_as_ide)  4.3节。<br />
+等。其中indent、syntax较为适合编程。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide) 4.3节。<br />
 
 `
     操作: za: 打开或关闭当前折叠；zM: 关闭多有折叠；zR: 打开多有折叠。
@@ -457,7 +457,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.8节。<br />
 
-[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim) 后端调用`ack`一定记得安装<br />。
+[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim) 后端调用`ack`一定记得安装。<br />
 
 `.vimrc`文件中添加配置如下:<br />
 
