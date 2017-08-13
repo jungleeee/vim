@@ -15,7 +15,7 @@
 ```
 
 全程参考:[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)<br />
-其余参考在文中将会在相关部分列出。<br />
+其余参考将会在文中相关部分列出。<br />
 文中内容如有错误，请指正！<br />
 原创，转载请注明出处！<br />
 
@@ -215,7 +215,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 
 ######代码折叠
 
-文件代码量大时，可能会对分析代码产生干扰，或者通过折叠函数调用与定义之间的代码，可以更加直观的理解函数功能<br />。
+文件代码量大时，可能会对分析代码产生干扰，或者通过折叠函数调用与定义之间的代码，可以更加直观的理解函数功能。<br />
 VIM自身支持多种折叠：手动折叠(manual)、基于缩进进行折叠(indent)、基于语义进行折叠(syntax)、未更改文本构成折叠等
 等。其中indent、syntax较为适合编程。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgn<br />u/use_vim_as_ide)  4.3节。<br />
 
@@ -282,7 +282,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 ```
     " set indentLine
     "let g:indentLine_enable = 1                    " 默认就是开启的
-    "let g:indentLine_char = '┆' '│'  '⎸' '▏' '¦'   " 配置可视化缩进时的显示符号
+    "let g:indentLine_char = '┆' '│'  '⎸' '▏' '¦'   " 配置可视化缩进时的显示符号，选其一
     "let g:indentLine_color_term = 239              " 参看作者的解释
     "map <C-i> :IndentLineToggle<CR>                " 映射快捷键用来开启/关闭可是话缩进
 ```
@@ -370,7 +370,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 进入之前生成`tag`文件的目录下，打开某一源文件后，通过快捷键`F8` 打开`tagbar`子窗口，可以通过快捷键`ctrl+w+w`快
 速切换子窗口，类似`alt+tab`的功能，或者使用前面定义的`ctrl+h/i/j/k`在`normal`模式下进行窗口切换，进入到`tagbar`
-窗口中<br />。
+窗口中。<br />
 
 在标识符列表中选中对应标识符后即可跳转至源码中对应位置;在源码中停顿几秒，`tagbar`将高亮对应标识符。`tagbar`有两
 种排序方式，一是按标签字母先后顺序；一是按标签在源码中出现的先后顺序。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)
@@ -379,7 +379,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 注释掉`let g:tagbar_sort=0`，将会使用字母顺序排序。<br />
 
 开发时代码不停在变更，如果每次都需要手动执行命令生成新的标签文件，太麻烦。通过引入插件 [indexer](https://github.com/vim-scripts/indexer.tar.gz) 实现自动生成标签。<br />
-并引入。`indexer` 依赖 [DfrankUtil](https://github.com/vim-scripts/DfrankUtil)、[vimprj](https://github.com/vim-scripts/vimpr) 两个插件，请一并安装。 此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide) 4.7节。<br />
+并引入。`indexer` 依赖 [DfrankUtil](https://github.com/vim-scripts/DfrankUtil)、[vimprj](https://github.com/vim-scripts/vimpr) 两个插件，请一并安装。 此段摘抄[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_id) 4.7节。<br />
 
 ```
     Plugin 'vim-scripts/indexer.tar.gz'
@@ -406,7 +406,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 方括号内为自动生成的标签文件名字，一般更工程一样。路径为工程的代码目录，不要包含构建目录，文档目录等，以免产生
 非代码文件的标签信息。当打开以上目录任何代码文件时，插件`indexer`便对整个目录创建标签文件，当代码有更新，文件
 保存时，`indexer`将自动调用`ctags`更新标签文件。`indexer`生成的标签文件以方括号内的名字命名，位于目录
-`~/.indexer_files_tags/` 下，并自动引入`Vim`中。此处3段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yang<br />yangwithgnu/use_vim_as_ide) 4.7节。<br />
+`~/.indexer_files_tags/` 下，并自动引入`Vim`中。此处3段摘抄 [所需及所获:像使用IDE一样使用vim](https://github./yangyangwithgnu/use_vim_as_ide) 4.7节。<br />
 
 ######声明/定义跳转
 
@@ -437,7 +437,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 #######快速移动
 
-[vim-easymotion](https://github.com/easymotion/vim-easymotion) 请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  8.3节。<br />
+[vim-easymotion](https://github.com/easymotion/vim-easymotion) 更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  8.3节。<br />
 
 `.vimrc`文件配置如下:<br />
 
@@ -455,7 +455,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 #######内容查找
 
-详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.8节。<br />
+更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.8节。<br />
 
 [ctrlsf.vim](https://github.com/dyng/ctrlsf.vim) 后端调用`ack`一定记得安装<br />。
 
@@ -475,7 +475,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 ######内容替换
 
-详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/us<br />e_vim_as_ide)  4.9节。<br />
+更多请参考 [所需及所获:像使用IDE一样使用vim](https:/github.com/yangyangwithgnu/use_vim_as_ide) 4.9节。<br />
 
 [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) 配合`ctrlsf`插件，实现多个不同位置的字符串替换。
 `.vimrc`文件中添加如下配置:<br />
@@ -499,12 +499,16 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 ######文件搜索
 
-[]
+```
+    Plugin 'Yggdroot/LeaderF'
+```
 
+[ctrlP](https://github.com/kien/ctrlp.vim) 和[LeaderF](https://github.com/Yggdroot/LeaderF) 插件都能实现文件搜索功能，`ctrlP`在网上搜索就能找到配置方法，这里不介绍。这里使用的`LeaderF`在网
+上资料不多，看作者的介绍操作，暂时还不够熟悉，后续补充。<br />
 
 ######快速注释
 
-详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.1节。<br />
+更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.1节。<br />
 
 [NERD Commenter](https://github.com/scrooloose/nerdcommenter) 能够快速注释/取消注释，并且提供不同的注释方式。<br />
 
@@ -553,15 +557,17 @@ ShowTrailingWhiteSpace](https://github.com/vim-scripts/ShowTrailingWhitespace)�
 我自己改变了一哈，每次保存文件的时候，自动清除当前文件中所有行尾的空格:<br />
 
 ```
-    "autocmd BufWritePre *.c,*.cpp,*.h,*.sh,*.py :%s/\s\+$//e
+    "autocmd BufWritePre *.c,*.cpp,*.h,*.sh, :%s/\s\+$//e
     autocmd BufWritePre * :%s/\s\+$//e
 ```
 
 注释掉的配置，表示只在这几个类型的文件执行保存文件命令时自动清除行尾空格，文件类型自己根据需要添加。<br />
 
-######模板补全
+######补全
 
-详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.2节。<br />
+主要介绍三种补全:模板补全，基于标签的补全，基于语义的补全。<br />
+
+模板补全: 更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.2节。<br />
 
 [ultisnips](https://github.com/SirVer/ultisnhips) 提供相同代码段的快速输入，比如`if-else`、`switch-case`语句。<br />
 
@@ -582,9 +588,163 @@ ShowTrailingWhiteSpace](https://github.com/vim-scripts/ShowTrailingWhitespace)�
     "let g:UltiSnipsJumpBackwardTrigger="<M-m>"
 ```
 
-另外需要说明的一点是，下载`ultisnips`插件后，默认是未提供模板补全用的文件的。需要自己下载。
-一种方式时安装插件[vim-snippets]( https://github.com/honza/vim-snippets)，复制`~/.vim/bundle/vim-snippets/UltiSnips`整个文件夹到`~/,vim/bundle/ultisnips`
-目录下面即可。另一种是自己到`github`上去下载 https://github.com/honza/vim-snippets ，其实内容都是一样的。我认为这个
-插件最好的点是支持自己定义，很强大。<br />
+另外需要说明的一点是，下载`ultisnips`插件后，默认是没有提供模板补全用的文件的。需要自己下载。
+一种方式时安装插件[vim-snippets]( https://github.com/honza/vim-snippets)，复制`~/.vim/bundle/vim-snippets/UltiSnips`整个文件夹到`~/.vim/bundle/ultisnips`
+目录下面即可。另一种是自己到`github`上去下载， https://github.com/honza/vim-snippets ，其实内容都是一样的。我认为这
+个插件最好的点是支持自己定义，很强大。<br />
 
+基于标签的补全: 详情请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.3节部分。<br />
 
+基于语义的补全: 更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.3节部分。<br />
+
+[YouCompleteMe](https://github.com/Valloric/YouCompleteMe) 插件在安装过程中，参看文章的作者以及很多其他介绍`YCM`插件使用的作者都有说到，`YCM`原作者建议下
+载`LLVM`官网提供的预编译二进制文件，以避免各种问题。但我按照教程介绍，最后编译生成始终只有一个`ycm_core.so`
+文件，也没有查找到原因，待优化。然后后面我是按照`YCM`原作者Git项目中`README.md`文件中`Ubuntu Linux x64`部分实
+现安装的，不需要手动下载库，按作者的顺序执行即可，需要比较长的时间。需要确认已安装`Cmake`、`python-dev`、
+`python3-dev`，没有的话请自行安装。更多请自行阅读[ README.md ](https://github.com/Valloric/YouCompleteMe)。<br />
+
+`YCM`插件需要在`.vimrc`文件中添加配置:<br />
+
+```
+    Plugin 'Valloric/YouCompleteMe'
+```
+
+```
+    " set YouComplete
+    set runtimepath+=~/.vim/bundle/YouCompleteMe
+    let g:ycm_collect_identifiers_from_tags_files=1                             " 开启YCM标签补全
+    let g:ycm_complete_in_comments=1                                            " 补全功能在注释中同样有效
+    let g:ycm_seed_identfiers_with_syntax=1                                     " 语法关键字补全
+    let g:ycm_confirm_extra_conf=0                                              " 允许VIM加载.ycm_extra_conf.py 文件，不再提示
+    let g:ycm_key_list_select_completion=['<M-n>', "<Down>"]                    " 补全列表中 向下选中
+    let g:ycm_key_list_previous_completion=['<M-m>', "<Up>"]                    " 补全列表中 向上选中
+    let g:ycm_min_num_of_chars_for_completion=2                                 " 从第2个键入字符就开始罗列匹配项
+    let g:ycm_cache_comnifunc=0                                                 " 禁止缓存匹配项，每次都重新生成匹配项
+    " 加载.ycm_extra_conf.py 文件的路径，可以不用每个工程目录下都去添加这个文件
+    let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_part/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    "nnoremap <M-=> :YcmCompleter GoToDefinition<CR>                            " 跳转到声明/定义的位置，在前面跳转部分有介绍
+    "nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    nnoremap <M-=> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+```
+
+另外还需要配置`.ycm_extra_conf.py`文件以及引入标签补全，这里就不做详述，请自行参考介绍。<br />
+
+######工程文件管理
+
+[NERDtree](`https://github.com/scrooloose/nerdtree)可以查看文件列表，要打开哪个文件，光标选中后回车即可在新`buffer`中打开。在`.vimrc`文件中添加如下配置:<br />
+
+```
+    Plugin 'scrooloose/nerdtree'
+```
+
+```
+    " set NERDTree
+    nmap <F9> :NERDTreeToggle<CR>
+    let NERDTreeShowBookmarks=1             " set NERDTree book marks default on
+    let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\hg$', '^\.svn$', '\.bzr$']
+    let NERDTreeWinSize=32                  " set width
+    let NERDTreeWinPos="right"              " set position
+    let NERDTreeShoeHidden=1                " show the hidden files
+    let NERDTreeMinimalUI=1                 " the window tags not show help info
+    let NERDTreeAutoDeleteBuffer=1          " Automatically deletes files when deletes files buffer
+```
+
+更多请参考[ 所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  6.1节部分。<br />
+
+######多文件编辑
+
+`Vim`中每打开一个文件`Vim`就对应创建一个`buffer`，多个文件就有多个`buffer`，但默认你只看得到最后`buffer`对应的
+Window，通过插件[MiniBufExplorer](https://github.com/fholgado/minibufexpl.vim)可以切换到不同的`buffer`及达到编辑多个文件的功能。在`.vimrc`文件中添加配置:<br />
+
+```
+    Plugin 'fholgado/minibufexpl.vim'
+```
+
+```
+    " set minibuffexploer
+    map <M-q> :bn<CR>                       " 切换多个buffer时的快捷键
+    map <M-w> :bp<CR>
+```
+
+使用时如果只打开了一个文件，默认是不会出现`buffer`列表的，其次要实现`buffer`切换需要先定位到`MiniBufExplorer`
+窗口上，在`normal`模式下使用前面定义的`ctrl+h/j/k/l`或者`ctrl+w+w`切换，当光标定位到`MiniBufExplorer`上之后就
+可以使用快捷键进行`buffer`切换了。
+
+更多请参考[ 所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  6.2节部分。<br />
+
+######自动对齐
+
+```
+    Plugin 'godlygeek/tabular'               " 自动对齐
+```
+
+后续补充。可自行搜索。<br />
+
+######Markdown
+
+`Markdown`就不多解释了，在`Vim`编辑过程中最大的需求就是实时预览，在这里介绍插件[markdown-preview](https://github.com/iamcco/markdown-preview.vim)，能够实现在
+浏览器中实时预览，默认是谷歌浏览器`Chorme`，自行下载。需要说明的是，这款插件在Github上比较多，比如
+[markdown-preview](https://github.com/atom/markdown-preview)，不需要浏览器支持即可实时预览，供君选择。[vim-markdown](https://github.com/plasticboy/vim-markdown) 是一个语法高亮插件，根据实际情况使用。<br />
+
+在`.vimrc`文件中添加配置:<br />
+
+```
+    Plugin 'plasticboy/vim-markdown'
+    Plugin 'iamcco/markdown-preview.vim'
+```
+
+```
+    " set markdown
+    let g:mkdp_auto_start=0                 " set 1, the vim will auto open preview window once enter markdown buffer
+    let g:mkdp_auto_open=0                  " set 1, the vim will auto open preciew window when you edit the markdown file
+    let g:mkdp_auto_close=1                 " set 1, the vim will auto close current preview window when change from markdown buffer to another buf
+    let g:mkdp_refresh_slow=0               " set 1, the vim will just refresh markdown when save the buffer or leave frim insert mode,default 0 is
+    let g:mkdp_command_for_global=0         " set 1, the markdown preview command can be use for all files, by default it just can be use in markdo
+    let g:mkdp_path_to_chrome="google-chrome"
+    map <F6> <Plug>MarkdownPreview
+    map <F7> <Plug>StopMarkdownPreview
+```
+
+基本上都是默认配置，除了打开/关闭的快捷键映射。更多的话，可以自己到Github看作者介绍。<br />
+
+###其他配置
+
+######文件模板
+
+新建源文件时，一般都会添加一些文件信息在文件开始的位置处。常见比如文件名、作者、创建时间、文件简介等等，如果每
+次都手动添加，就会很麻烦。所以可以通过添加脚本函数的方式，实现文件新建时自动添加。在这里贴上一个`.vimrc`文件的
+配置，可以参考他的实现方式: https://github.com/taizilongxu/dotfiles/blob/master/vimrc 。文件中其他也可以参考。<br />
+注意一点，如果需要判断是否为`*.h`文件，请使用`if expand("%:e")=='h'`进行判断，当然不是只有`*.h`文件需要这样哈。
+
+######自动添加时间
+
+需要的话也是通过脚本函数实现。`.vimrc`文件中添加配置:<br />
+
+```
+    autocmd BufWritePre,FileWritePre *.c,*.h,*.sh,*.py ks|call LastChanged()|'s
+    func! LastChanged()                          " auto add last changed date
+        if line ("$") > 15
+            let l = 15
+        else
+            let l = line("$")
+        endif
+        exe "1,".l."g/Last Changed : /s/Last Changed : .*/Last Changed : ".strftime("%c")
+    endfunc
+```
+
+关于这一段的解释和详细介绍请参考: http://www.cnblogs.com/soli/archive/2009/10/21/885044.html 。
+
+###结束语
+
+第一次的环境配置就先这样了，后续有其他好用插件，会再推荐。文中还有没写完整的，会尽快补充。<br />
+没有特别认真的写，比较水，希望不要介意，能够提供一丁点的帮助，我觉得也是好的。谢谢。
+
+###参考
+
+1、[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide) <br />
+2、[.vimrc](https://github.com/wklken/k-vim/blob/master/vimrc) <br />
+3、[.vimrc](https://github.com/taizilongxu/dotfiles/blob/master/vimrc) <br />
+4、[.vimrc](https://github.com/humiaozuzu/dot-vimrc/blob/master/vimrc) <br />
+5、[vim配置技巧——在vim中使用autocmd命令在保存文件时自动插入最后修改日期和时间](http://www.cnblogs.com/soli/archive/2009/10/21/885044.html) <br />
+6、[Vim与Markdown共舞](https://segmentfault.com/a/1190000008321057) <br />
+7、[NERD_commenter安装和使用](http://blog.csdn.net/zcube/article/details/42298419) <br />
