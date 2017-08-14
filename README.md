@@ -212,6 +212,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 `
     选取终端菜单栏中`Edit(编辑)`栏，最后一项`Profile Preference`，在弹出界面框中选中`color`项，如下图所示:
 `
+
 ![solarized](https://github.com/jungleeee/vim/blob/master/pic/1_solarized.png)
 
 ######代码折叠
@@ -287,6 +288,8 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
     "let g:indentLine_color_term = 239              " 参看作者的解释
     "map <C-i> :IndentLineToggle<CR>                " 映射快捷键用来开启/关闭可是话缩进
 ```
+
+![indentLine](https://github.com/jungleeee/vim/blob/master/pic/2_indentLine.png)
 
 ######文件切换
 
