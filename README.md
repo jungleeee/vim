@@ -212,6 +212,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 `
     选取终端菜单栏中`Edit(编辑)`栏，最后一项`Profile Preference`，在弹出界面框中选中`color`项，如下图所示:
 `
+![solarized](https://github.com/jungleeee/vim/blob/master/pic/1_solarized.png)
 
 ######代码折叠
 
