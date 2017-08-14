@@ -66,7 +66,7 @@ VIM装请自行搞定。版本7.x + 。<br />
 ---
 ###插件管理
 
-[Vundle](https://github.com/VundleVim/Vundle.vim)是一个行之有效的插件，接管`.vim/`文件夹，为每一个插件指定唯一目录。更清晰、智能。<br />
+[Vundle](https://github.com/VundleVim/Vundle.vim)是一个行之有效的插件，接管`.vim/`文件夹，为每一个插件指定唯一目录。更清晰、明了。<br />
 [Vundle](https://github.com/VundleVim/Vundle.vim)会接管`.vim/`文件夹下的所有目录，所以先清空。在通过命令安装Vundle:<br />
 
 ```
@@ -471,7 +471,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
     nnoremap <M-f> :CtrlSF<CR>             " 键入快捷键alt+f，搜索光标当前字符串的匹配项
 ```
 
-`ctrlsf`通过`p`键可以定位到匹配项的完整代码，类似跳转功能，键入`q`推出插件。<br />
+`ctrlsf`通过`p`键可以定位到匹配项的完整代码，类似跳转功能，键入`q`退出插件。<br />
 
 ######内容替换
 
