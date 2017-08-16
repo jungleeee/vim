@@ -330,7 +330,7 @@ map <M-w> :bp<CR>                       " switch window
 "let g:miniBufExplMapWindowMavArrows=1   " use <C-<Down,Up,Left,Right>> switch window
 "let g:miniBufExplMapCTabSwitchBufs=1    " use <C-Tab> switch window
 "let g:miniBufExplModSelTarget=1
-let g:miniBufExplModThanOne=0
+let g:miniBufExplorerMoreThanOne=1
 
 " set markdown
 let g:mkdp_auto_start=0                 " set 1, the vim will auto open preview window once enter markdown buffer
