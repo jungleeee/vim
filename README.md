@@ -668,11 +668,12 @@ Window，通过插件[MiniBufExplorer](https://github.com/fholgado/minibufexpl.v
     " set minibuffexploer
     map <M-q> :bn<CR>                       " 切换多个buffer时的快捷键
     map <M-w> :bp<CR>
+    " 这个设置，网上我查到两种说法，一个是在gvim下时防止出现多窗口，一种是自动打开。实际情况看，无论是0/1，在只有一个文件时都会显示nimib
+    let g:let g:miniBufExplorerMoreThanOne=1
 ```
 
-使用时如果只打开了一个文件，默认是不会出现`buffer`列表的，其次要实现`buffer`切换需要先定位到`MiniBufExplorer`
-窗口上，在`normal`模式下使用前面定义的`ctrl+h/j/k/l`或者`ctrl+w+w`切换，当光标定位到`MiniBufExplorer`上之后就
-可以使用快捷键进行`buffer`切换了。
+`buffer`快捷切换时，只需要在当前编辑文件中`normal`下按快捷键切换(需要存在多个buffer)，但是删除`buffer`时，需要将光标定位到`buffer`标签上。键
+如`d`删除光标所在`buffer`。
 
 更多请参考[ 所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  6.2节部分。<br />
 
