@@ -247,7 +247,7 @@ let g:tagbar_type_cpp = {
 let g:EasyMotion_leader_key='f'
 
 " set indexer
-let g:indexer_ctagsCommandLineOptions="--c++-kinds=+c+d+e+f+l+m+n+p+s+t+u+v+x --fields=+iaSl --extra=+q"
+let g:indexer_ctagsCommandLineOptions="--c++-kinds=+c+d+e+f+l+m+n+p+s+t+u+v+x --fields=+iaSl --extra=+q --langmap=c:.h --languages=c++,c"
 
 " set ctrlsf
 let g:ctrlsf_ackprg='ack'              " set default
@@ -324,8 +324,8 @@ let NERDTreeAutoDeleteBuffer=1          " Automatically deletes files when delet
 
 " set minibuffexploer
 "map <F7>  :MBEToggle<CR>
-map <M-q> :bn<CR>                       " switch window
-map <M-w> :bp<CR>                       " switch window
+map <M-w> :bn<CR>                       " switch window
+map <M-q> :bp<CR>                       " switch window
 "let g:miniBufExplMapWindowNavVim=1      " use <C-h,j,k,l> switch window
 "let g:miniBufExplMapWindowMavArrows=1   " use <C-<Down,Up,Left,Right>> switch window
 "let g:miniBufExplMapCTabSwitchBufs=1    " use <C-Tab> switch window
@@ -343,7 +343,7 @@ map <F6> <Plug>MarkdownPreview
 map <F7> <Plug>StopMarkdownPreview
 
 " alt key mapping
-set ttimeout ttimeoutlen=100    " set keypad code to judfe time
+set ttimeout ttimeoutlen=168    " set keypad code to judfe time
 " set *.cpp & *.h switch
 exec "set <M-t>=\et"
 inoremap <M-t> <esc>ta
@@ -420,7 +420,7 @@ inoremap <M-w> <esc>wa
             call append(line(".")+10, "")
             call append(line(".")+11, "/* Inlcude ---------------------------------------------------------------------*/")
             call append(line(".")+12, "")
-            call append(line(".")+13, "/** @addtogroup Template_Project")
+            call append(line(".")+13, "/** @addtogroup xxx_Project")
             call append(line(".")+14, "  * @{")
             call append(line(".")+15, "  */")
             call append(line(".")+16, "")
@@ -471,7 +471,7 @@ inoremap <M-w> <esc>wa
             call append(line(".")+20, "/* Exported variables ----------------------------------------------------------*/")
             call append(line(".")+21, "/* Exported functions ----------------------------------------------------------*/")
             call append(line(".")+22, "")
-            call append(line(".")+23, "#endif /* __HEADER_H _ */")
+            call append(line(".")+23, "#endif /* __HEADER_H_ */")
             call append(line(".")+24, "")
             call append(line(".")+25, "/************************** Coopyright (C) Jungleeee 2017 *******END OF FILE*******/")
         endif
