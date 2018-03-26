@@ -7,7 +7,7 @@
         Last Change :
 
 ---
-###前言
+### 前言
 
 ```
         学习、总结，交流，进步！
@@ -20,7 +20,7 @@
 原创，转载请注明出处！<br />
 
 ---
-###Ready
+### Ready
 
 VIM装请自行搞定。版本7.x + 。<br />
 请检查用户目录下是否存在: `.vim/`文件夹和`.vimrc`用户配置文件，可以使用命令 `ls -l ~` 查看。<br />
@@ -29,7 +29,7 @@ VIM装请自行搞定。版本7.x + 。<br />
 如果没有请自行创建。<br />
 
 ---
-###基本配置
+### 基本配置
 
 可以直接添加到`.vimrc`文件中<br />
 
@@ -64,7 +64,7 @@ VIM装请自行搞定。版本7.x + 。<br />
 ```
 
 ---
-###插件管理
+### 插件管理
 
 [Vundle](https://github.com/VundleVim/Vundle.vim)是一个行之有效的插件，接管`.vim/`文件夹，为每一个插件指定唯一目录。更清晰、明了。<br />
 [Vundle](https://github.com/VundleVim/Vundle.vim)会接管`.vim/`文件夹下的所有目录，所以先清空。在通过命令安装Vundle:<br />
@@ -149,7 +149,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 关于插件: 多数插件在Github上都有不同的下载源，优先选取该插件的作者的下载源。<br />
 
 ---
-###UI Theme
+### UI Theme
 
 界面优化，主题配置:<br />
 
@@ -204,7 +204,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 " }
 ```
 
-######主题
+###### 主题
 
 通过前面插件列表下载了solarized、molokai两款主题，可以通过注释其中一款而是用另一款。在实际使用中molokai可以直接
 使用，而主题solarized使用时，背景配色异常，最后通过以下方式正常使用（安装后能够正常使用的请忽略）。<br />
@@ -215,7 +215,7 @@ vundle管理的插件必须位于`call vundle#begin()` 和 `call vundle#end()`�
 
 ![solarized](https://github.com/jungleeee/vim/blob/master/pic/1_solarized.png)
 
-######代码折叠
+###### 代码折叠
 
 文件代码量大时，可能会对分析代码产生干扰，或者通过折叠函数调用与定义之间的代码，可以更加直观的理解函数功能。<br />
 VIM自身支持多种折叠：手动折叠(manual)、基于缩进进行折叠(indent)、基于语义进行折叠(syntax)、未更改文本构成折叠等
@@ -224,15 +224,15 @@ VIM自身支持多种折叠：手动折叠(manual)、基于缩进进行折叠(in
 `
     操作: za: 打开或关闭当前折叠；zM: 关闭多有折叠；zR: 打开多有折叠。
 `
-######其他
+###### 其他
 
 VIM基本配置项很多，本人并没有进行太多设置，具体设置项的作用或者功能，请参考其他`.vimrc`文件，或者对该项
 Search，基本上都能够得到解释，在此不过多赘述。将会在文末贴上部分其他作者的`.vimrc`文件，以供参考。<br />
 
 ---
-###插件详细
+### 插件详细
 
-######状态栏
+###### 状态栏
 
 ```
     set laststatus=2                " 总是显示状态栏
@@ -259,7 +259,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
     let g:airline_theme='powerlineish'
 ```
 
-######可视化缩进
+###### 可视化缩进
 
 ```
     Plugin 'Yggdroot/indentLine'
@@ -291,7 +291,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 ![indentLine](https://github.com/jungleeee/vim/blob/master/pic/2_indentLine.png)
 
-######文件切换
+###### 文件切换
 
 ```
     Plugin 'derekwyatt/vim-fswitch'
@@ -311,7 +311,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
     这个键
 ```
 
-######标签系统
+###### 标签系统
 
 代码中的变量、宏、结构、枚举、类、函数、对象等等这些统称为标识符，每个标识符的定义、所在文件的行位置、所在文件
 的路径等信息就是标签（tag)。此段摘抄 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.6节。<br />
@@ -412,7 +412,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 保存时，`indexer`将自动调用`ctags`更新标签文件。`indexer`生成的标签文件以方括号内的名字命名，位于目录
 `~/.indexer_files_tags/` 下，并自动引入`Vim`中。此处3段摘抄 [所需及所获:像使用IDE一样使用vim](https://github./yangyangwithgnu/use_vim_as_ide) 4.7节。<br />
 
-######声明/定义跳转
+###### 声明/定义跳转
 
 主要两类导航: 基于标签的跳转和基于语义的跳转。<br />
 
@@ -439,7 +439,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 的插件在原文章中的章节位置，然后主要介绍我所遇到的一些小问题和解决办法，以及我的快捷键配置，提供十分有限的参考
 价值，谢谢。<br />
 
-#######快速移动
+####### 快速移动
 
 [vim-easymotion](https://github.com/easymotion/vim-easymotion) 更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  8.3节。<br />
 
@@ -457,7 +457,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 设置启用`easymotion`的前缀键`<Leader>`为`f`，在`normal`模式下，双击`f`键后输入需要跳转到的位置的字母，然后根
 据快速跳转的字符，快速定位到目标位置。<br />
 
-#######内容查找
+####### 内容查找
 
 更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  4.8节。<br />
 
@@ -477,7 +477,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 `ctrlsf`通过`p`键可以定位到匹配项的完整代码，类似跳转功能，键入`q`退出插件。<br />
 
-######内容替换
+###### 内容替换
 
 更多请参考 [所需及所获:像使用IDE一样使用vim](https:/github.com/yangyangwithgnu/use_vim_as_ide) 4.9节。<br />
 
@@ -501,7 +501,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 
 `Vim`自带很强大的替换功能，这里就不介绍了。建议了解一哈，一般会看这篇文档的，都有可能在面试的时候被提问。<br />
 
-######文件搜索
+###### 文件搜索
 
 ```
     Plugin 'Yggdroot/LeaderF'
@@ -510,7 +510,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 [ctrlP](https://github.com/kien/ctrlp.vim) 和[LeaderF](https://github.com/Yggdroot/LeaderF) 插件都能实现文件搜索功能，`ctrlP`在网上搜索就能找到配置方法，这里不介绍。这里使用的`LeaderF`在网
 上资料不多，看作者的介绍操作，暂时还不够熟悉，后续补充。<br />
 
-######快速注释
+###### 快速注释
 
 更多请参考 [所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  5.1节。<br />
 
@@ -534,7 +534,7 @@ Search，基本上都能够得到解释，在此不过多赘述。将会在文�
 当前选中代码。反之，选中需要取消注释的部分，键入快捷键`alt+u`取消注释。`alt+a`可以切换注释方式:`/* */或者//`，
 但这个快捷键定义跟某些有冲突，将就可用，也可以自定义其他。<br />
 
-######行尾空格
+###### 行尾空格
 
 这个插件是我在知乎的一个回答中了解到的，有实用性，提供参考。贴上这个知乎的帖子: <br />
 https://www.zhihu.com/question/19989337 <br />
@@ -567,7 +567,7 @@ ShowTrailingWhiteSpace](https://github.com/vim-scripts/ShowTrailingWhitespace)�
 
 注释掉的配置，表示只在这几个类型的文件执行保存文件命令时自动清除行尾空格，文件类型自己根据需要添加。<br />
 
-######补全
+###### 补全
 
 主要介绍三种补全:模板补全，基于标签的补全，基于语义的补全。<br />
 
@@ -633,7 +633,7 @@ ShowTrailingWhiteSpace](https://github.com/vim-scripts/ShowTrailingWhitespace)�
 
 另外还需要配置`.ycm_extra_conf.py`文件以及引入标签补全，这里就不做详述，请自行参考介绍。<br />
 
-######工程文件管理
+###### 工程文件管理
 
 [NERDtree](`https://github.com/scrooloose/nerdtree)可以查看文件列表，要打开哪个文件，光标选中后回车即可在新`buffer`中打开。在`.vimrc`文件中添加如下配置:<br />
 
@@ -655,7 +655,7 @@ ShowTrailingWhiteSpace](https://github.com/vim-scripts/ShowTrailingWhitespace)�
 
 更多请参考[ 所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  6.1节部分。<br />
 
-######多文件编辑
+###### 多文件编辑
 
 `Vim`中每打开一个文件`Vim`就对应创建一个`buffer`，多个文件就有多个`buffer`，但默认你只看得到最后`buffer`对应的
 Window，通过插件[MiniBufExplorer](https://github.com/fholgado/minibufexpl.vim)可以切换到不同的`buffer`及达到编辑多个文件的功能。在`.vimrc`文件中添加配置:<br />
@@ -677,7 +677,7 @@ Window，通过插件[MiniBufExplorer](https://github.com/fholgado/minibufexpl.v
 
 更多请参考[ 所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide)  6.2节部分。<br />
 
-######自动对齐
+###### 自动对齐
 
 ```
     Plugin 'godlygeek/tabular'               " 自动对齐
@@ -685,7 +685,7 @@ Window，通过插件[MiniBufExplorer](https://github.com/fholgado/minibufexpl.v
 
 后续补充。可自行搜索。<br />
 
-######Markdown
+###### Markdown
 
 `Markdown`就不多解释了，在`Vim`编辑过程中最大的需求就是实时预览，在这里介绍插件[markdown-preview](https://github.com/iamcco/markdown-preview.vim)，能够实现在
 浏览器中实时预览，默认是谷歌浏览器`Chorme`，自行下载。需要说明的是，这款插件在Github上比较多，比如
@@ -712,16 +712,16 @@ Window，通过插件[MiniBufExplorer](https://github.com/fholgado/minibufexpl.v
 
 基本上都是默认配置，除了打开/关闭的快捷键映射。更多的话，可以自己到Github看作者介绍。<br />
 
-###其他配置
+### 其他配置
 
-######文件模板
+###### 文件模板
 
 新建源文件时，一般都会添加一些文件信息在文件开始的位置处。常见比如文件名、作者、创建时间、文件简介等等，如果每
 次都手动添加，就会很麻烦。所以可以通过添加脚本函数的方式，实现文件新建时自动添加。在这里贴上一个`.vimrc`文件的
 配置，可以参考他的实现方式: https://github.com/taizilongxu/dotfiles/blob/master/vimrc 。文件中其他也可以参考。<br />
 注意一点，如果需要判断是否为`*.h`文件，请使用`if expand("%:e")=='h'`进行判断，当然不是只有`*.h`文件需要这样哈。
 
-######自动添加时间
+###### 自动添加时间
 
 需要的话也是通过脚本函数实现。`.vimrc`文件中添加配置:<br />
 
@@ -739,12 +739,12 @@ Window，通过插件[MiniBufExplorer](https://github.com/fholgado/minibufexpl.v
 
 关于这一段的解释和详细介绍请参考: http://www.cnblogs.com/soli/archive/2009/10/21/885044.html 。
 
-###结束语
+### 结束语
 
 第一次的环境配置就先这样了，后续有其他好用插件，会再推荐。文中还有没写完整的，会尽快补充。<br />
 没有特别认真的写，比较水，希望不要介意，能够提供一丁点的帮助，我觉得也是好的。谢谢。
 
-###参考
+### 参考
 
 1、[所需及所获:像使用IDE一样使用vim](https://github.com/yangyangwithgnu/use_vim_as_ide) <br />
 2、[.vimrc](https://github.com/wklken/k-vim/blob/master/vimrc) <br />
